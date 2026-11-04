@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | BruteForceX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+    <h2>🛡 BruteForceX</h2>
+    <a href="/logout">Logout</a>
+</nav>
+
+<main class="hero">
+    <p class="tag">SECURITY DASHBOARD</p>
+    <h1>Welcome, <span>{{ username }}</span></h1>
+    <p>Your demonstration session is active.</p>
+
+    <div class="features">
+        <div class="card">
+            <h3>Argon2</h3>
+            <p>Secure password hashing.</p>
+        </div>
+
+        <div class="card">
+            <h3>Login Protection</h3>
+            <p>Failed-attempt monitoring and temporary lockout.</p>
+        </div>
+
+        <div class="card">
+            <h3>Attack Lab</h3>
+            <p>Run controlled password-guessing simulations.</p>
+        </div>
+    </div>
+
+    <a href="/simulate" class="btn">Open Attack Lab</a>
+</main>
+
+</body>
+</html>

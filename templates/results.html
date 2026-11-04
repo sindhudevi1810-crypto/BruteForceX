@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack Lab | BruteForceX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+    <h2>🛡 BruteForceX</h2>
+    <a href="/">Home</a>
+</nav>
+
+<main class="login-box">
+    <h1>Attack Simulation Lab</h1>
+    <p>Run a password-guessing simulation against a local test account.</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+        <label>Select demonstration account</label>
+
+        <select name="target" required>
+            <option value="weak_user">Vulnerable account</option>
+            <option value="secure_user">Protected account</option>
+        </select>
+
+        <button type="submit">Start Simulation</button>
+    </form>
+
+    {% if results %}
+        <h2>Simulation Results</h2>
+
+        {% for item in results %}
+            <div class="result-item">
+                <b>Attempt {{ item.attempt }}</b>
+                <p>{{ item.message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <a href="/" class="btn secondary">Back Home</a>
+</main>
+
+</body>
+</html>

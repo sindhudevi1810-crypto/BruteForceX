@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Password Testing | BruteForceX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h2>🛡 BruteForceX</h2>
+        <a href="/">Home</a>
+    </nav>
+
+    <main class="login-box">
+        <h1>Manual Password Testing</h1>
+        <p>Test passwords against your local demonstration accounts.</p>
+
+        <form method="POST" action="{{ url_for('manual_test') }}">
+
+            <label for="target">Select Demo Account</label>
+            <select name="target" id="target" required>
+                <option value="weak_user">Vulnerable Account</option>
+                <option value="secure_user">Protected Account</option>
+            </select>
+
+            <label for="password">Enter Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter a test password"
+                required
+            >
+
+            <button type="submit">Test Password</button>
+
+        </form>
+
+        {% if result %}
+            <div class="alert">
+                <h3>Testing Result</h3>
+                <p>{{ result }}</p>
+            </div>
+        {% endif %}
+
+        <p>
+            <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+        </p>
+    </main>
+
+</body>
+</html>
